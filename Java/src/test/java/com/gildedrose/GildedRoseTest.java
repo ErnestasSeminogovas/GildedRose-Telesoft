@@ -41,4 +41,16 @@ class GildedRoseTest {
         assertEquals(2, app.items[1].getQuality());
 
     }
+
+    @Test
+    public void updateConjuredItemQuality() {
+        Item[] items = new Item[]{
+                new Item(Constants.CONJURED_ITEM, -2, 10), // Should decrease by 4
+                new Item(Constants.CONJURED_ITEM, 2, 10)}; // Should decrease by 2
+        GildedRose app = new GildedRose(items);
+        app.updateItems();
+        assertEquals(6, app.items[0].getQuality());
+        assertEquals(8, app.items[1].getQuality());
+
+    }
 }

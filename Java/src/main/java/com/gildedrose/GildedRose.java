@@ -25,6 +25,8 @@ class GildedRose {
             updateBackstagePassesQuality(item);
         } else if (item.getName().equals(Constants.AGED_BRIE)) {
             updateAgedBrieQuality(item);
+        } else if (item.getName().contains(Constants.CONJURED_ITEM)) {
+            updateConjuredItemQuality(item);
         } else {
             if (!item.getName().equals(Constants.AGED_BRIE)
                     && !item.getName().contains(Constants.BACKSTAGE_PASSES)) {
@@ -91,6 +93,15 @@ class GildedRose {
         }
         else  {
             item.increaseQuality();
+        }
+    }
+
+    private void updateConjuredItemQuality(Item item) {
+        if (item.getSellIn() < 0) {
+            item.decreaseQualityByValue(4);
+        }
+        else  {
+            item.decreaseQualityByValue(2);
         }
     }
 
