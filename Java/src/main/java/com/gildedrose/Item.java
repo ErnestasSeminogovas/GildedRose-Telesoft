@@ -58,15 +58,23 @@ public class Item {
         }
     }
 
-
     public void decreaseQuality() {
         if (this.quality > 0) {
-            if (this.sellIn <= 0 && this.quality > 1) {
-                this.quality = this.quality - 2;
+            if (this.sellIn <= 0) {
+                decreaseQualityByValue(2);
             }
             else {
                 this.quality--;
             }
+        }
+    }
+
+    public void decreaseQualityByValue(int value) {
+        if (this.quality - value  > 0) {
+            this.quality = this.quality - value;
+        }
+        else {
+            nullifyQuality();
         }
     }
 

@@ -8,7 +8,7 @@ class GildedRose {
     }
 
     public void updateItems() {
-        for ( Item item  : items) {
+        for (Item item : items) {
             updateSellIn(item);
             updateQuality(item);
         }
@@ -23,6 +23,8 @@ class GildedRose {
     private void updateQuality(Item item) {
         if (item.getName().contains(Constants.BACKSTAGE_PASSES)) {
             updateBackstagePassesQuality(item);
+        } else if (item.getName().equals(Constants.AGED_BRIE)) {
+            updateAgedBrieQuality(item);
         } else {
             if (!item.getName().equals(Constants.AGED_BRIE)
                     && !item.getName().contains(Constants.BACKSTAGE_PASSES)) {
@@ -74,14 +76,20 @@ class GildedRose {
     private void updateBackstagePassesQuality(Item item) {
         if (item.getSellIn() < 0) {
             item.nullifyQuality();
-        }
-        else if (item.getSellIn() < 5) {
+        } else if (item.getSellIn() < 5) {
             item.increaseQualityByValue(3);
+        } else if (item.getSellIn() < 10) {
+            item.increaseQualityByValue(2);
+        } else {
+            item.increaseQuality();
         }
-        else if (item.getSellIn() < 10) {
+    }
+
+    private void updateAgedBrieQuality(Item item) {
+        if (item.getSellIn() < 0) {
             item.increaseQualityByValue(2);
         }
-        else {
+        else  {
             item.increaseQuality();
         }
     }

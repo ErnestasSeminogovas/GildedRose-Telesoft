@@ -29,4 +29,16 @@ class GildedRoseTest {
         assertEquals(3, app.items[2].getQuality());
         assertEquals(2, app.items[3].getQuality());
     }
+
+    @Test
+    public void updateAgedBrieQuality() {
+        Item[] items = new Item[]{
+                new Item(Constants.AGED_BRIE, -2, 1), // Should increase by 2
+                new Item(Constants.AGED_BRIE, 2, 1)}; // Should increase by 1
+        GildedRose app = new GildedRose(items);
+        app.updateItems();
+        assertEquals(3, app.items[0].getQuality());
+        assertEquals(2, app.items[1].getQuality());
+
+    }
 }
