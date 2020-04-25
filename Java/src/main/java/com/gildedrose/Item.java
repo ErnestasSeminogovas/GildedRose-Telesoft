@@ -44,11 +44,30 @@ public class Item {
     }
 
     public void increaseQuality() {
-        this.quality++;
+        if (this.quality < Constants.MAXIMUM_QUALITY) {
+            this.quality++;
+        }
     }
 
+    public void increaseQualityByValue(int value) {
+        if (this.quality + value < Constants.MAXIMUM_QUALITY) {
+            this.quality = this.quality + value;
+        }
+        else {
+            this.quality = Constants.MAXIMUM_QUALITY;
+        }
+    }
+
+
     public void decreaseQuality() {
-        this.quality--;
+        if (this.quality > 0) {
+            if (this.sellIn <= 0 && this.quality > 1) {
+                this.quality = this.quality - 2;
+            }
+            else {
+                this.quality--;
+            }
+        }
     }
 
     public void decreaseSellIn() {
