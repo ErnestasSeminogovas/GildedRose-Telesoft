@@ -42,4 +42,20 @@ public class Item {
     public void setQuality(int quality) {
         this.quality = quality;
     }
+
+    public void increaseQuality() {
+        this.quality++;
+    }
+
+    public void decreaseQuality() {
+        this.quality--;
+    }
+
+    public void decreaseSellIn() {
+        this.sellIn--;
+    }
+
+    public void nullifyQuality() {
+        this.quality = 0;
+    }
 }
