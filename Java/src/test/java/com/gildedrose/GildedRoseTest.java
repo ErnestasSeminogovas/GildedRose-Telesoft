@@ -6,13 +6,18 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class GildedRoseTest {
 
-//    @Test
-//    void foo() {
-////        Item[] items = new Item[] { new Item("foo", 0, 0) };
-////        GildedRose app = new GildedRose(items);
-////        app.updateQuality();
-////        assertEquals("fixme", app.items[0].getName());
-//    }
+    @Test
+    public void updateItemQuality() {
+        Item[] items = new Item[]{
+                new Item("Item 1", -2, 10), // Should decrease by 2
+                new Item("Item 2", 2, 10), // Should decrease by 1
+                new Item(Constants.SULFURAS_HAND_OF_RAGNAROS, -1, 10)}; // Should not change
+        GildedRose app = new GildedRose(items);
+        app.updateItems();
+        assertEquals(8, app.items[0].getQuality());
+        assertEquals(9, app.items[1].getQuality());
+        assertEquals(10, app.items[2].getQuality());
+    }
 
 
     @Test
@@ -39,7 +44,6 @@ class GildedRoseTest {
         app.updateItems();
         assertEquals(3, app.items[0].getQuality());
         assertEquals(2, app.items[1].getQuality());
-
     }
 
     @Test
@@ -51,6 +55,5 @@ class GildedRoseTest {
         app.updateItems();
         assertEquals(6, app.items[0].getQuality());
         assertEquals(8, app.items[1].getQuality());
-
     }
 }

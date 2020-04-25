@@ -23,24 +23,12 @@ public class Item {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public int getSellIn() {
         return sellIn;
     }
 
-    public void setSellIn(int sellIn) {
-        this.sellIn = sellIn;
-    }
-
     public int getQuality() {
         return quality;
-    }
-
-    public void setQuality(int quality) {
-        this.quality = quality;
     }
 
     public void increaseQuality() {
@@ -60,7 +48,7 @@ public class Item {
 
     public void decreaseQuality() {
         if (this.quality > 0) {
-            if (this.sellIn <= 0) {
+            if (this.sellIn < 0) {
                 decreaseQualityByValue(2);
             }
             else {
