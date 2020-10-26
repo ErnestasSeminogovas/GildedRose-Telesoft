@@ -15,19 +15,19 @@ class GildedRose {
     }
 
     private void updateSellIn(Item item) {
-        if (!item.getName().equals(Constants.SULFURAS_HAND_OF_RAGNAROS)) {
+        if (!item.name.equals(Constants.SULFURAS_HAND_OF_RAGNAROS)) {
             item.decreaseSellIn();
         }
     }
 
     private void updateQuality(Item item) {
-        if (item.getName().contains(Constants.BACKSTAGE_PASSES)) {
+        if (item.name.contains(Constants.BACKSTAGE_PASSES)) {
             updateBackstagePassesQuality(item);
-        } else if (item.getName().equals(Constants.AGED_BRIE)) {
+        } else if (item.name.equals(Constants.AGED_BRIE)) {
             updateAgedBrieQuality(item);
-        } else if (item.getName().contains(Constants.CONJURED_ITEM)) {
+        } else if (item.name.contains(Constants.CONJURED_ITEM)) {
             updateConjuredItemQuality(item);
-        } else if (!item.getName().equals(Constants.SULFURAS_HAND_OF_RAGNAROS)) {
+        } else if (!item.name.equals(Constants.SULFURAS_HAND_OF_RAGNAROS)) {
             item.decreaseQuality();
         }
     }
